@@ -5,16 +5,16 @@ Widget::Widget(QWidget *parent)
     : QWidget(parent)
     , ui(new Ui::Widget)
 {
-    //ui->iniciar->setGeometry(555,275,170,170);
     ui->setupUi(this);
     this->setMinimumSize(width(),height());
     this->setMaximumSize(width(),height());
     scene = new QGraphicsScene();
     ui->graphicsView->setScene(scene);
-    ui->graphicsView->setFixedSize(width(),height()-10);
+    ui->graphicsView->setFixedSize(width(),height()-18);
     ui->graphicsView->setSceneRect(0,0,width(),height()-20);
     ui->graphicsView->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     ui->graphicsView->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+    ui->graphicsView->setBackgroundBrush(QBrush(QImage(":/images/fondo.png").scaled(1280,720)));
     //ui->iniciar->setVisible(false);
     ui->splitter->setVisible(false);
 
