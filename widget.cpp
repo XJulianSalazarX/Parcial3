@@ -19,8 +19,12 @@ Widget::Widget(QWidget *parent)
     ui->splitter->setVisible(false);
 
     canon = new Canon(0,300,10);
+    canon->setDistancia(600);
     scene->addItem(canon);
     canon->addPortal();
+
+    canon2 = new Canon(600,300,10);
+    scene->addItem(canon2);
 }
 
 Widget::~Widget()
@@ -31,6 +35,14 @@ Widget::~Widget()
 
 void Widget::on_iniciar_clicked()
 {
-    canon->generarDisparo();
     ui->iniciar->setVisible(false);
+    while (true) {
+        double angle = rand() % 90;
+        if(canon->disparar(600,300,angle)){
+            canon->generarDisparo();
+            break;
+        }
+    }
+//    canon->generarDisparo();
+
 }

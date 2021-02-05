@@ -14,10 +14,13 @@ public:
     QRectF boundingRect() const;
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget = nullptr);
     void generarDisparo();
+    bool disparar(double x_, double y_,double angulo);
     void addPortal();
+    void setDistancia(double value);
+
 protected:
     short r;
-    double posx,posy,distance;
+    double posx,posy,distancia;
     Portal *portal;
 };
 

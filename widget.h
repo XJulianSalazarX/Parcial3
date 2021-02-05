@@ -24,5 +24,6 @@ private:
     Ui::Widget *ui;
     QGraphicsScene *scene;
     Canon *canon;
+    Canon *canon2;
 };
 #endif // WIDGET_H

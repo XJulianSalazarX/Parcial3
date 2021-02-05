@@ -25,9 +25,11 @@ public:
 
     void setDistacia(double value);
 
+    void setR_impacto(double value);
+
 private:
     double w,h,col;
-    double posx,posy,v_inicial,angulo,distacia;
+    double posx,posy,v_inicial,angulo,distacia,r_impacto;
     QPixmap *pixmap;
     QTimer *timer;
     Bala *bala;
