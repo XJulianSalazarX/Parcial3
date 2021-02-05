@@ -1,13 +1,21 @@
 #ifndef CANON_H
 #define CANON_H
 
-#include <QObject>
+#include <QGraphicsItem>
+#include <QPainter>
 
-class Canon: public QObject
+class Canon: public QGraphicsItem
 {
-    Q_OBJECT
 public:
-    Canon();
+    Canon(double posx_,double posy_,short r_);
+    ~Canon();
+
+    QRectF boundingRect() const;
+    void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget = nullptr);
+
+private:
+    short r;
+    double posx,posy,distance;
 };
 
 #endif // CANON_H
