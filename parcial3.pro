@@ -22,6 +22,7 @@ SOURCES += \
     canonofensivo.cpp \
     main.cpp \
     portal.cpp \
+    radio.cpp \
     widget.cpp
 
 HEADERS += \
@@ -30,6 +31,7 @@ HEADERS += \
     canondefensivo.h \
     canonofensivo.h \
     portal.h \
+    radio.h \
     widget.h
 
 FORMS += \

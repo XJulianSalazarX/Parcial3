@@ -6,6 +6,7 @@
 #include "canon.h"
 #include "canonofensivo.h"
 #include "canondefensivo.h"
+#include <QMessageBox>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class Widget; }
@@ -22,6 +23,10 @@ public:
 private slots:
     void on_iniciar_clicked();
 
+    void on_punto1_clicked();
+
+    void on_next_clicked();
+
 private:
     Ui::Widget *ui;
     QGraphicsScene *scene;
@@ -29,5 +34,6 @@ private:
 //    Canon *canon2;
     CanonOfensivo *ofensivo;
     CanonDefensivo *defensivo;
+    short punto;
 };
 #endif // WIDGET_H

@@ -27,9 +27,11 @@ public:
 
     void setR_impacto(double value);
 
+    void setT_max(double value);
+
 private:
     double w,h,col;
-    double posx,posy,v_inicial,angulo,distacia,r_impacto;
+    double posx,posy,v_inicial,angulo,distacia,r_impacto,t_max;
     QPixmap *pixmap;
     QTimer *timer;
     Bala *bala;

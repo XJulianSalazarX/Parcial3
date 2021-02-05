@@ -25,14 +25,14 @@ void Canon::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWi
     option = nullptr;
     widget = nullptr;
     painter->setBrush(Qt::yellow);
-    painter->drawEllipse(boundingRect().center(),15,15);
+    painter->drawEllipse(boundingRect().center(),20,20);
     painter->setBrush(Qt::darkCyan);
     painter->drawEllipse(boundingRect());
 }
 
 void Canon::generarDisparo()
 {
-    portal->setVisible(true);
+    //portal->setVisible(true);
     portal->disparar();
 }
 
@@ -45,7 +45,7 @@ bool Canon::disparar(double x_, double y_,double angulo)
     for(int inicial=50;inicial<350;inicial++){
         Vx = inicial*cos(angulo);
         Vy = inicial*sin(angulo);
-        for(double t=0;t<100;t+=0.5){
+        for(double t=0;t<20;t+=0.5){
             x = posx + Vx * t;
             y = posy + Vy*t -(0.5*9.8*t*t);
             if(sqrt(pow((x-x_),2)+pow((y-y_),2)) <= radio){
@@ -53,6 +53,7 @@ bool Canon::disparar(double x_, double y_,double angulo)
                 portal->setV_inicial(inicial);
                 portal->setDistacia(distancia);
                 portal->setR_impacto(radio);
+                portal->setT_max(t);
                 return true;
             }
         }

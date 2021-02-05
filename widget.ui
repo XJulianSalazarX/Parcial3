@@ -79,9 +79,23 @@
     </property>
    </widget>
   </widget>
+  <widget class="QPushButton" name="next">
+   <property name="geometry">
+    <rect>
+     <x>1170</x>
+     <y>680</y>
+     <width>80</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>siguiente</string>
+   </property>
+  </widget>
   <zorder>graphicsView</zorder>
   <zorder>splitter</zorder>
   <zorder>iniciar</zorder>
+  <zorder>next</zorder>
  </widget>
  <resources/>
  <connections/>
