@@ -3,6 +3,7 @@
 
 #include <QGraphicsItem>
 #include <QPainter>
+#include "portal.h"
 
 class Canon: public QGraphicsItem
 {
@@ -12,10 +13,12 @@ public:
 
     QRectF boundingRect() const;
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget = nullptr);
-
-private:
+    void generarDisparo();
+    void addPortal();
+protected:
     short r;
     double posx,posy,distance;
+    Portal *portal;
 };
 
 #endif // CANON_H

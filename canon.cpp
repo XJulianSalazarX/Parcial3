@@ -3,14 +3,16 @@
 Canon::Canon(double posx_,double posy_,short r_)
 {
     posx = posx_;
-    posy = 720-posy_;
+    posy = posy_;
     r = r_;
-    setPos(posx,posy);
+    setPos(posx,720-posy);
+    portal = new Portal(posx,posy);
+    portal->setVisible(false);
 }
 
 Canon::~Canon()
 {
-
+    //delete portal;
 }
 
 QRectF Canon::boundingRect() const
@@ -22,4 +24,14 @@ void Canon::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWi
 {
     painter->setBrush(Qt::yellow);
     painter->drawEllipse(boundingRect());
+}
+
+void Canon::generarDisparo()
+{
+    portal->setVisible(true);
+}
+
+void Canon::addPortal()
+{
+    scene()->addItem(portal);
 }

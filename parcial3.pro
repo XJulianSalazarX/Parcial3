@@ -18,10 +18,12 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
     canon.cpp \
     main.cpp \
+    portal.cpp \
     widget.cpp
 
 HEADERS += \
     canon.h \
+    portal.h \
     widget.h
 
 FORMS += \
@@ -31,3 +33,6 @@ FORMS += \
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
+
+RESOURCES += \
+    resources.qrc

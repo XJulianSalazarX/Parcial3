@@ -26,14 +26,14 @@
   <widget class="QPushButton" name="iniciar">
    <property name="geometry">
     <rect>
-     <x>1090</x>
-     <y>440</y>
-     <width>141</width>
-     <height>61</height>
+     <x>555</x>
+     <y>275</y>
+     <width>170</width>
+     <height>170</height>
     </rect>
    </property>
    <property name="text">
-    <string>PushButton</string>
+    <string>Iniciar</string>
    </property>
   </widget>
   <widget class="QSplitter" name="splitter">
@@ -79,6 +79,9 @@
     </property>
    </widget>
   </widget>
+  <zorder>graphicsView</zorder>
+  <zorder>splitter</zorder>
+  <zorder>iniciar</zorder>
  </widget>
  <resources/>
  <connections/>
