@@ -4,6 +4,8 @@
 #include <QWidget>
 #include <QGraphicsScene>
 #include "canon.h"
+#include "canonofensivo.h"
+#include "canondefensivo.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class Widget; }
@@ -23,7 +25,9 @@ private slots:
 private:
     Ui::Widget *ui;
     QGraphicsScene *scene;
-    Canon *canon;
-    Canon *canon2;
+//    Canon *canon;
+//    Canon *canon2;
+    CanonOfensivo *ofensivo;
+    CanonDefensivo *defensivo;
 };
 #endif // WIDGET_H

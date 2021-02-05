@@ -12,7 +12,7 @@ Canon::Canon(double posx_,double posy_,short r_)
 
 Canon::~Canon()
 {
-    //delete portal;
+    delete portal;
 }
 
 QRectF Canon::boundingRect() const
@@ -33,9 +33,6 @@ void Canon::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWi
 void Canon::generarDisparo()
 {
     portal->setVisible(true);
-//    portal->setAngulo(45);
-//    portal->setDistacia(distancia);
-//    portal->setV_inicial(100);
     portal->disparar();
 }
 
@@ -71,4 +68,24 @@ void Canon::addPortal()
 void Canon::setDistancia(double value)
 {
     distancia = value;
+}
+
+double Canon::getPosx() const
+{
+    return posx;
+}
+
+void Canon::setPosx(double value)
+{
+    posx = value;
+}
+
+double Canon::getPosy() const
+{
+    return posy;
+}
+
+void Canon::setPosy(double value)
+{
+    posy = value;
 }

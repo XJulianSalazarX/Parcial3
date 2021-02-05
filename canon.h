@@ -18,6 +18,12 @@ public:
     void addPortal();
     void setDistancia(double value);
 
+    double getPosx() const;
+    void setPosx(double value);
+
+    double getPosy() const;
+    void setPosy(double value);
+
 protected:
     short r;
     double posx,posy,distancia;
