@@ -1,13 +1,33 @@
 #ifndef CANON_H
 #define CANON_H
 
-#include <QObject>
+#include <QGraphicsItem>
+#include <QPainter>
+#include "portal.h"
 
-class Canon: public QObject
+class Canon: public QGraphicsItem
 {
-    Q_OBJECT
 public:
-    Canon();
+    Canon(double posx_,double posy_,short r_);
+    ~Canon();
+
+    QRectF boundingRect() const;
+    void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget = nullptr);
+    void generarDisparo();
+    bool disparar(double x_, double y_,double angulo);
+    void addPortal();
+    void setDistancia(double value);
+
+    double getPosx() const;
+    void setPosx(double value);
+
+    double getPosy() const;
+    void setPosy(double value);
+
+protected:
+    short r;
+    double posx,posy,distancia;
+    Portal *portal;
 };
 
 #endif // CANON_H

@@ -16,12 +16,20 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    bala.cpp \
     canon.cpp \
+    canondefensivo.cpp \
+    canonofensivo.cpp \
     main.cpp \
+    portal.cpp \
     widget.cpp
 
 HEADERS += \
+    bala.h \
     canon.h \
+    canondefensivo.h \
+    canonofensivo.h \
+    portal.h \
     widget.h
 
 FORMS += \
@@ -31,3 +39,6 @@ FORMS += \
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
+
+RESOURCES += \
+    resources.qrc
