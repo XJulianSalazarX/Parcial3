@@ -24,6 +24,8 @@ void Canon::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWi
 {
     option = nullptr;
     widget = nullptr;
+    painter->setBrush(Qt::yellow);
+    painter->drawEllipse(boundingRect().center(),15,15);
     painter->setBrush(Qt::darkCyan);
     painter->drawEllipse(boundingRect());
 }

@@ -18,12 +18,12 @@ Widget::Widget(QWidget *parent)
     //ui->iniciar->setVisible(false);
     ui->splitter->setVisible(false);
 
-    canon = new Canon(0,300,10);
+    canon = new Canon(0,300,2);
     canon->setDistancia(600);
     scene->addItem(canon);
     canon->addPortal();
 
-    canon2 = new Canon(600,300,10);
+    canon2 = new Canon(600,300,2);
     scene->addItem(canon2);
 }
 

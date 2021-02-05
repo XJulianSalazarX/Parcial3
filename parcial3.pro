@@ -18,6 +18,8 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
     bala.cpp \
     canon.cpp \
+    canondefensivo.cpp \
+    canonofensivo.cpp \
     main.cpp \
     portal.cpp \
     widget.cpp
@@ -25,6 +27,8 @@ SOURCES += \
 HEADERS += \
     bala.h \
     canon.h \
+    canondefensivo.h \
+    canonofensivo.h \
     portal.h \
     widget.h
 
