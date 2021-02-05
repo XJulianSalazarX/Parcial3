@@ -11,11 +11,11 @@ class Bala: public QObject, public QGraphicsPixmapItem
 {
     Q_OBJECT
 public:
-    Bala(double posx_,double posy_,double v_inicial_,int angulo_,double distacia_);
+    Bala(double Xo_,double Yo_,double v_inicial_,int angulo_,double distacia_);
     ~Bala();
 
 private:
-    double posx,posy,v_inicial,r_impacto,tiempo,g,distancia;
+    double Xo,Yo,posx,posy,v_inicial,r_impacto,tiempo,g,distancia;
     int angulo;
     QTimer *timer;
 

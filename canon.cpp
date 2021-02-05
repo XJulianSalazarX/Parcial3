@@ -29,6 +29,10 @@ void Canon::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWi
 void Canon::generarDisparo()
 {
     portal->setVisible(true);
+    portal->setAngulo(45);
+    portal->setDistacia(distance);
+    portal->setV_inicial(100);
+    portal->disparar();
 }
 
 void Canon::addPortal()

@@ -32,6 +32,27 @@ void Portal::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QW
     painter->drawPixmap(-w/2,-h/2,*pixmap,col,0,w,h);
 }
 
+void Portal::disparar()
+{
+    bala = new Bala(posx,posy,v_inicial,angulo,distacia);
+    scene()->addItem(bala);
+}
+
+void Portal::setV_inicial(double value)
+{
+    v_inicial = value;
+}
+
+void Portal::setAngulo(double value)
+{
+    angulo = value;
+}
+
+void Portal::setDistacia(double value)
+{
+    distacia = value;
+}
+
 void Portal::actualizar()
 {
     col += w;

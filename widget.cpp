@@ -18,7 +18,7 @@ Widget::Widget(QWidget *parent)
     //ui->iniciar->setVisible(false);
     ui->splitter->setVisible(false);
 
-    canon = new Canon(100,100,10);
+    canon = new Canon(0,300,10);
     scene->addItem(canon);
     canon->addPortal();
 }
