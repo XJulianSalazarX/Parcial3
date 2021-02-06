@@ -8,7 +8,7 @@
 #include <QTimer>
 #include <QGraphicsScene>
 #include "bala.h"
-
+//genera las balas
 class Portal: public QObject, public QGraphicsItem
 {
     Q_OBJECT
@@ -17,6 +17,7 @@ public:
     ~Portal();
     QRectF boundingRect() const;
     void paint(QPainter *painter,const QStyleOptionGraphicsItem *option,QWidget *widget);
+    //instaciar la clase bala con parametros de salida
     void disparar();
 
     void setV_inicial(double value);
@@ -34,8 +35,9 @@ public:
     double getAngulo() const;
 
     void setIsOfensivo(bool value);
+    //detener el timer de la clase Bala
     void stopBala();
-
+    //eliminar bala y rastro de esta
     void limpiarBala();
 
 private:

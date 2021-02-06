@@ -3,7 +3,7 @@
 
 #include <QGraphicsItem>
 #include <QPainter>
-
+//rastro que deja la bala
 class Camino: public QGraphicsItem
 {
 public:

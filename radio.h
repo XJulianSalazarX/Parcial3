@@ -4,7 +4,7 @@
 #include <QGraphicsItem>
 #include <QPainter>
 #include <QGraphicsScene>
-
+//representa el radio de impacto de la bala
 class Radio: public QGraphicsItem
 {
 public:

@@ -19,6 +19,7 @@ public:
     ~Bala();
     QRectF boundingRect() const;
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget = nullptr);
+    //Detener el timer
     void stopTimer();
 
 private:
@@ -32,6 +33,7 @@ private:
 
 
 public slots:
+    //Aplicar las ecuaciones del movimeinto parabolico
     void Mover();
 };
 
