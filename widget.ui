@@ -26,14 +26,17 @@
   <widget class="QPushButton" name="iniciar">
    <property name="geometry">
     <rect>
-     <x>555</x>
-     <y>275</y>
-     <width>170</width>
-     <height>170</height>
+     <x>584</x>
+     <y>314</y>
+     <width>141</width>
+     <height>131</height>
     </rect>
    </property>
+   <property name="styleSheet">
+    <string notr="true">border-image: url(:/images/play.png);</string>
+   </property>
    <property name="text">
-    <string>Iniciar</string>
+    <string/>
    </property>
   </widget>
   <widget class="QSplitter" name="splitter">
@@ -49,26 +52,41 @@
     <enum>Qt::Vertical</enum>
    </property>
    <widget class="QPushButton" name="punto1">
+    <property name="styleSheet">
+     <string notr="true">border-image: url(:/images/Button.png);</string>
+    </property>
     <property name="text">
      <string>Disparo cañon ofensivo a defensivo</string>
     </property>
    </widget>
    <widget class="QPushButton" name="punto2">
+    <property name="styleSheet">
+     <string notr="true">border-image: url(:/images/Button.png);</string>
+    </property>
     <property name="text">
      <string>Disparo cañon defensivo a ofensivo</string>
     </property>
    </widget>
    <widget class="QPushButton" name="punto3">
+    <property name="styleSheet">
+     <string notr="true">border-image: url(:/images/Button.png);</string>
+    </property>
     <property name="text">
      <string>Disparo de defensa cañon defensivo</string>
     </property>
    </widget>
    <widget class="QPushButton" name="punto4">
+    <property name="styleSheet">
+     <string notr="true">border-image: url(:/images/Button.png);</string>
+    </property>
     <property name="text">
      <string>Disparo 2 de defensa cañon defensivo</string>
     </property>
    </widget>
    <widget class="QPushButton" name="punto5">
+    <property name="styleSheet">
+     <string notr="true">border-image: url(:/images/Button.png);</string>
+    </property>
     <property name="text">
      <string>Disparo apoyo cañon ofensivo</string>
     </property>
@@ -78,13 +96,16 @@
    <property name="geometry">
     <rect>
      <x>1140</x>
-     <y>560</y>
-     <width>80</width>
-     <height>41</height>
+     <y>620</y>
+     <width>81</width>
+     <height>61</height>
     </rect>
    </property>
+   <property name="styleSheet">
+    <string notr="true">border-image: url(:/images/play.png);</string>
+   </property>
    <property name="text">
-    <string>siguiente</string>
+    <string/>
    </property>
   </widget>
   <widget class="QLabel" name="label">
@@ -195,12 +216,15 @@
     <rect>
      <x>1140</x>
      <y>620</y>
-     <width>80</width>
-     <height>41</height>
+     <width>81</width>
+     <height>61</height>
     </rect>
    </property>
+   <property name="styleSheet">
+    <string notr="true">border-image: url(:/images/back.png);</string>
+   </property>
    <property name="text">
-    <string>Salir</string>
+    <string/>
    </property>
   </widget>
   <zorder>graphicsView</zorder>
