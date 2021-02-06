@@ -324,7 +324,7 @@ void Widget::repetirDispDefensivo()
 
 void Widget::espiaAtaque()
 {
-    for(int angle=probados;angle<90;angle++){
+    for(int angle=probados;angle<=90;angle++){
         if(angle == 90){
             QMessageBox::critical(this,"Error","No se puede destruir la bala de defensa mas de "+QString::number(balas));
             balas = 3;
