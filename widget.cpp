@@ -279,14 +279,16 @@ void Widget::espiaDefensa()
         if(punto == 3){
             if(defensivo->SimularDispDefensivo(angle,ofensivo->getPosx(),ofensivo->getPosy(),ofensivo->getV_inicial(),ofensivo->getAngulo())){
                 defensivo->generarDisparo();
-                balas ++;
+                if(punto != 5)
+                    balas ++;
                 break;
             }
         }
         else{
             if(defensivo->SimularDispDefensivo2(angle,ofensivo->getPosx(),ofensivo->getPosy(),ofensivo->getV_inicial(),ofensivo->getAngulo())){
                 defensivo->generarDisparo();
-                balas ++;
+                if(punto != 5)
+                    balas ++;
                 break;
             }
         }
@@ -302,7 +304,8 @@ void Widget::espiaDefensa()
 void Widget::repetirDispDefensivo()
 {
     defensivo->generarDisparo();
-    balas++;
+    if(punto != 5)
+        balas++;
     timer->stop();
     disconnect(timer,SIGNAL(timeout()),this,SLOT(repetirDispDefensivo()));
     if(punto == 5){
@@ -316,6 +319,7 @@ void Widget::espiaAtaque()
     for(int angle=probados;angle<90;angle++){
         if(ofensivo->simularDispApoyo(angle,defensivo->getPosx(),defensivo->getPosy(),defensivo->getV_inicial(),defensivo->getAngulo())){
             ofensivo->disparoApoyo();
+            balas ++;
             probados = ofensivo->anguloBalaApoyo()+1;
             break;
         }
