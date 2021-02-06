@@ -89,6 +89,7 @@ void Widget::quitarPortal()
 
 void Widget::on_iniciar_clicked()
 {
+    ui->label->setText("");
     if(ui->xd->value()-ui->xo->value()<640){
         QMessageBox::critical(this,"Error","La distancia horizontal minima entre los cañones debe ser de 640.");
         return;
@@ -131,11 +132,11 @@ void Widget::on_iniciar_clicked()
     }
         break;
     case 3:{
+        balas = 0;
         while (true) {
             double angle = rand() % 90;
             if(ofensivo->disparar(defensivo->getPosx(),defensivo->getPosy(),angle)){
                 ofensivo->generarDisparo();
-                balas ++;
                 break;
             }
         }
@@ -144,11 +145,11 @@ void Widget::on_iniciar_clicked()
     }
         break;
     case 4:{
+        balas = 0;
         while (true) {
             double angle = rand() % 90;
             if(ofensivo->disparar(defensivo->getPosx(),defensivo->getPosy(),angle)){
                 ofensivo->generarDisparo();
-                balas ++;
                 break;
             }
         }
@@ -157,11 +158,11 @@ void Widget::on_iniciar_clicked()
     }
         break;
     case 5:{
+        balas = 0;
         while (true) {
             double angle = rand() % 90;
             if(ofensivo->disparar(defensivo->getPosx(),defensivo->getPosy(),angle)){
                 ofensivo->generarDisparo();
-                balas ++;
                 break;
             }
         }
@@ -217,14 +218,12 @@ void Widget::on_next_clicked()
         break;
     case 3:{
         ofensivo->generarDisparo();
-        balas ++;
         connect(timer,SIGNAL(timeout()),this,SLOT(espiaDefensa()));
         timer->start(2000);
     }
         break;
     case 4:{
         ofensivo->generarDisparo();
-        balas ++;
         connect(timer,SIGNAL(timeout()),this,SLOT(espiaDefensa()));
         timer->start(2000);
     }
@@ -303,6 +302,7 @@ void Widget::espiaDefensa()
 void Widget::repetirDispDefensivo()
 {
     defensivo->generarDisparo();
+    balas++;
     timer->stop();
     disconnect(timer,SIGNAL(timeout()),this,SLOT(repetirDispDefensivo()));
     if(punto == 5){

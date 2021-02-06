@@ -1,5 +1,8 @@
 #include "canondefensivo.h"
 #include "widget.h"
+#include <QDebug>
+
+extern Widget *w;
 
 CanonDefensivo::CanonDefensivo(double posx_, double posy_, short r_)
               :Canon(posx_,posy_,r_)
@@ -40,7 +43,19 @@ bool CanonDefensivo::SimularDispDefensivo(double angulo, double XoE, double YoE,
                     portal->setR_impacto(radio);
                     portal->setT_max(t);
                     portal->setIsOfensivo(false);
-
+                    if(w->getBalas()== 0)
+                        w->agregarTexto("No conseguido\n\n");
+                    QString datos="Simulacion defensa: "+QString::number(w->getBalas()+1);
+                    datos+="\nCoordenadas de salida: ("+QString::number(posx);
+                    datos+=", "+QString::number(posy)+")\n";
+                    datos+="Velocidad inicial: "+QString::number(inicial)+"\n";
+                    datos+="Angulo de disparo: "+QString::number(angulo)+"\n";
+                    datos+="Tiempo en el que detona la bala: "+QString::number(t)+" seg.\n";
+                    datos+="Coordenas de detonacion: ("+QString::number(x);
+                    datos+=", "+QString::number(y)+")\n";
+                    datos+="Coordenadas Objetivo: ("+QString::number(xE);
+                    datos+=", "+QString::number(yE)+")\n";
+                    w->agregarTexto(datos);
                     return true;
                 }
             }
@@ -72,6 +87,19 @@ bool CanonDefensivo::SimularDispDefensivo2(double angulo, double XoE, double YoE
                     portal->setR_impacto(radio);
                     portal->setT_max(t);
                     portal->setIsOfensivo(false);
+                    if(w->getBalas()== 0)
+                        w->agregarTexto("No conseguido\n\n");
+                    QString datos="Simulacion defensa: "+QString::number(w->getBalas()+1);
+                    datos+="\nCoordenadas de salida: ("+QString::number(posx);
+                    datos+=", "+QString::number(posy)+")\n";
+                    datos+="Velocidad inicial: "+QString::number(inicial)+"\n";
+                    datos+="Angulo de disparo: "+QString::number(angulo)+"\n";
+                    datos+="Tiempo en el que detona la bala: "+QString::number(t)+" seg.\n";
+                    datos+="Coordenas de detonacion: ("+QString::number(x);
+                    datos+=", "+QString::number(y)+")\n";
+                    datos+="Coordenadas Objetivo: ("+QString::number(xE);
+                    datos+=", "+QString::number(yE)+")\n";
+                    w->agregarTexto(datos);
                     return true;
                 }
             }
