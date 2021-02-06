@@ -4,6 +4,7 @@ CanonOfensivo::CanonOfensivo(double posx_, double posy_, short r_)
              :Canon(posx_,posy_,r_)
 {
     portal2 = new Portal(posx,posy);
+    portal2->setVisible(false);
 }
 
 void CanonOfensivo::stop()
@@ -61,4 +62,15 @@ bool CanonOfensivo::simularDispApoyo(double angulo, double XoE, double YoE, doub
         }
     }
     return false;
+}
+
+void CanonOfensivo::disparoApoyo()
+{
+    portal2->setVisible(true);
+    portal2->disparar();
+}
+
+void CanonOfensivo::addPortal2()
+{
+    scene()->addItem(portal2);
 }

@@ -53,5 +53,6 @@ private:
 public slots:
     void espiaDefensa();
     void repetirDispDefensivo();
+    void espiaAtaque();
 };
 #endif // WIDGET_H

@@ -29,6 +29,7 @@ Widget::Widget(QWidget *parent)
     ofensivo = new CanonOfensivo(0,300,2);
     scene->addItem(ofensivo);
     ofensivo->addPortal();
+
     defensivo = new CanonDefensivo(1000,100,2);
     scene->addItem(defensivo);
     defensivo->addPortal();
@@ -276,12 +277,27 @@ void Widget::espiaDefensa()
     }
     timer->stop();
     disconnect(timer,SIGNAL(timeout()),this,SLOT(espiaDefensa()));
+    if(punto == 5){
+        connect(timer,SIGNAL(timeout()),this,SLOT(espiaAtaque()));
+        timer->start(1000);
+    }
 }
 
 void Widget::repetirDispDefensivo()
 {
     defensivo->generarDisparo();
     timer->stop();
+}
+
+void Widget::espiaAtaque()
+{
+    for(int angle=0;angle<90;angle++){
+        if(ofensivo->simularDispApoyo(angle,defensivo->getPosx(),defensivo->getPosy(),defensivo->getV_inicial(),defensivo->getAngulo())){
+            ofensivo->disparoApoyo();
+        }
+    }
+    timer->stop();
+    disconnect(timer,SIGNAL(timeout()),this,SLOT(espiaAtaque()));
 }
 
 void Widget::on_punto4_clicked()

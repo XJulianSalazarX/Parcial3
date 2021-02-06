@@ -9,6 +9,8 @@ public:
 
     void stop();
     bool simularDispApoyo(double angulo, double XoE, double YoE, double ViE, double angE);
+    void disparoApoyo();
+    void addPortal2();
 private:
     Portal *portal2;
 };
