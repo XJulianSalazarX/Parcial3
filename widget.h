@@ -25,6 +25,7 @@ public:
     void mostrarDatos();
     void agregarTexto(QString datos);
     void quitarPortal();
+    void quitarPortal2();
 
     short getPunto() const;
     void stopOfensivo();

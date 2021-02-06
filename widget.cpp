@@ -1,6 +1,5 @@
 #include "widget.h"
 #include "ui_widget.h"
-#include <QDebug>
 
 Widget::Widget(QWidget *parent)
     : QWidget(parent)
@@ -27,18 +26,6 @@ Widget::Widget(QWidget *parent)
     ui->next->setVisible(false);
     ui->label->setVisible(false);
     invisible();
-
-//    ofensivo = new CanonOfensivo(0,300,2);
-//    scene->addItem(ofensivo);
-//    ofensivo->addPortal();
-//    ofensivo->addPortal2();
-
-//    defensivo = new CanonDefensivo(1275,300,2);
-//    scene->addItem(defensivo);
-//    defensivo->addPortal();
-//    ofensivo->setDistancia(abs(ofensivo->getPosx()-defensivo->getPosx()));
-//    defensivo->setDistancia(abs(ofensivo->getPosx()-defensivo->getPosx()));
-
 }
 
 Widget::~Widget()
@@ -86,6 +73,11 @@ void Widget::quitarPortal()
 {
     ofensivo->portalInvisible();
     defensivo->portalInvisible();
+}
+
+void Widget::quitarPortal2()
+{
+    ofensivo->portalInvisible2();
 }
 
 void Widget::on_iniciar_clicked()
@@ -173,7 +165,7 @@ void Widget::on_iniciar_clicked()
     }
         break;
     default:{
-        qDebug() << "Opcion no valida";
+        QMessageBox::critical(this,"Error","Opcion no valida");
     }
         break;
     }
@@ -190,13 +182,18 @@ void Widget::on_punto1_clicked()
 
 void Widget::on_next_clicked()
 {
+
     ui->next->setVisible(false);
+    //qDebug() <<"Cantidad de balas: " <<balas;
     if(balas == 3){
+        scene->clear();
+        ui->label->setText(ui->label->text()+"Hola mundo");
         mostrarDatos();
         return;
     }
     switch (punto) {
     case 1:{
+        ofensivo->limpiarPortal();
         while (true) {
             double angle = rand() % 90;
             if(ofensivo->disparar(defensivo->getPosx(),defensivo->getPosy(),angle)){
@@ -208,6 +205,7 @@ void Widget::on_next_clicked()
     }
         break;
     case 2:{
+        defensivo->limpiarPortal();
         while (true) {
             double angle = 91 + rand() % (181-91);
             if(defensivo->disparar(ofensivo->getPosx(),ofensivo->getPosy(),angle)){
@@ -219,26 +217,32 @@ void Widget::on_next_clicked()
     }
         break;
     case 3:{
+        ofensivo->limpiarPortal();
+        defensivo->limpiarPortal();
         ofensivo->generarDisparo();
         connect(timer,SIGNAL(timeout()),this,SLOT(espiaDefensa()));
         timer->start(2000);
     }
         break;
     case 4:{
+        ofensivo->limpiarPortal();
+        defensivo->limpiarPortal();
         ofensivo->generarDisparo();
         connect(timer,SIGNAL(timeout()),this,SLOT(espiaDefensa()));
         timer->start(2000);
     }
         break;
     case 5:{
+        ofensivo->limpiarPortal();
+        defensivo->limpiarPortal();
+        ofensivo->limpiarPortal2();
         ofensivo->generarDisparo();
         connect(timer,SIGNAL(timeout()),this,SLOT(repetirDispDefensivo()));
         timer->start(2000);
-
     }
         break;
     default:{
-        qDebug() << "Opcion no valida";
+        QMessageBox::critical(this,"Error","Opcion no valida");
     }
     }
 }
@@ -321,6 +325,12 @@ void Widget::repetirDispDefensivo()
 void Widget::espiaAtaque()
 {
     for(int angle=probados;angle<90;angle++){
+        if(angle == 90){
+            QMessageBox::critical(this,"Error","No se puede destruir la bala de defensa mas de "+QString::number(balas));
+            balas = 3;
+            nextVisible();
+            break;
+        }
         if(ofensivo->simularDispApoyo(angle,defensivo->getPosx(),defensivo->getPosy(),defensivo->getV_inicial(),defensivo->getAngulo())){
             ofensivo->disparoApoyo();
             balas ++;
@@ -359,7 +369,6 @@ void Widget::on_salir_clicked()
 {
     if(ui->label->isVisible()){
         ui->label->setVisible(false);
-        scene->clear();
         ui->splitter->setVisible(true);
         punto = 0;
         balas = 0;

@@ -1,6 +1,5 @@
 #include "canonofensivo.h"
 #include "widget.h"
-#include <QDebug>
 
 extern Widget *w;
 
@@ -54,11 +53,9 @@ bool CanonOfensivo::simularDispApoyo(double angulo, double XoE, double YoE, doub
 
             //bala enemiga ya alcanzo a la bala a proteger
             if(sqrt(pow((xA-xE),2)+pow((yA-yE),2))<=distancia*0.05){
-                qDebug() << "gana defensivo";
                 break;
             }
             else if(sqrt(pow((x-xE),2)+pow((y-yE),2))<=radio and sqrt(pow((posx-xE),2)+pow((posy-yE),2))>distancia*0.05){
-                qDebug() << "datos encontrados";
                 if(y>0 and sqrt(pow((x-xA),2)+pow((y-yA),2))>radio){
                     portal2->setAngulo(angulo);
                     portal2->setV_inicial(inicial);
@@ -102,4 +99,14 @@ void CanonOfensivo::addPortal2()
 double CanonOfensivo::anguloBalaApoyo()
 {
     return portal2->getAngulo();
+}
+
+void CanonOfensivo::limpiarPortal2()
+{
+    portal2->limpiarBala();
+}
+
+void CanonOfensivo::portalInvisible2()
+{
+    portal2->setVisible(false);
 }

@@ -1,5 +1,4 @@
 #include "canon.h"
-#include <QDebug>
 #include "widget.h"
 
 extern Widget *w;
@@ -73,7 +72,6 @@ bool Canon::disparar(double x_, double y_,double angulo)
                 datos+=", "+QString::number(y)+")\n";
                 datos+="Coordenadas Objetivo: ("+QString::number(x_);
                 datos+=", "+QString::number(y_)+")\n";
-                qDebug() << datos;
                 w->agregarTexto(datos);
                 return true;
             }
@@ -90,6 +88,11 @@ void Canon::addPortal()
 void Canon::portalInvisible()
 {
     portal->setVisible(false);
+}
+
+void Canon::limpiarPortal()
+{
+    portal->limpiarBala();
 }
 
 void Canon::setDistancia(double value)

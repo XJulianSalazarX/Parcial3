@@ -1,5 +1,6 @@
 #ifndef CANONOFENSIVO_H
 #define CANONOFENSIVO_H
+
 #include <canon.h>
 
 class CanonOfensivo: public Canon
@@ -13,6 +14,9 @@ public:
     void disparoApoyo();
     void addPortal2();
     double anguloBalaApoyo();
+    void limpiarPortal2();
+    void quitarPortal();
+    void portalInvisible2();
 private:
     Portal *portal2;
 };

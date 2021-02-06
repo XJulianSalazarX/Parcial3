@@ -1,6 +1,5 @@
 #include "canondefensivo.h"
 #include "widget.h"
-#include <QDebug>
 
 extern Widget *w;
 

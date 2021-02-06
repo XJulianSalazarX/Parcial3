@@ -17,6 +17,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     bala.cpp \
+    camino.cpp \
     canon.cpp \
     canondefensivo.cpp \
     canonofensivo.cpp \
@@ -27,6 +28,7 @@ SOURCES += \
 
 HEADERS += \
     bala.h \
+    camino.h \
     canon.h \
     canondefensivo.h \
     canonofensivo.h \

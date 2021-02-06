@@ -73,11 +73,6 @@
      <string>Disparo apoyo cañon ofensivo</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="punto6">
-    <property name="text">
-     <string>Configurar disparo de salida cañon ofensivo</string>
-    </property>
-   </widget>
   </widget>
   <widget class="QPushButton" name="next">
    <property name="geometry">
@@ -95,9 +90,9 @@
   <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
-     <x>258</x>
+     <x>348</x>
      <y>8</y>
-     <width>641</width>
+     <width>551</width>
      <height>721</height>
     </rect>
    </property>
@@ -212,7 +207,6 @@
   <zorder>splitter</zorder>
   <zorder>iniciar</zorder>
   <zorder>next</zorder>
-  <zorder>label</zorder>
   <zorder>label_2</zorder>
   <zorder>label_3</zorder>
   <zorder>xo</zorder>
@@ -220,6 +214,7 @@
   <zorder>xd</zorder>
   <zorder>yd</zorder>
   <zorder>salir</zorder>
+  <zorder>label</zorder>
  </widget>
  <resources/>
  <connections/>

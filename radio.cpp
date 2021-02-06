@@ -1,5 +1,4 @@
 #include "radio.h"
-#include <QDebug>
 
 Radio::Radio(double r_)
 {
