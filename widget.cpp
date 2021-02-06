@@ -132,7 +132,16 @@ void Widget::on_iniciar_clicked()
     }
         break;
     case 4:{
-
+        while (true) {
+            double angle = rand() % 90;
+            if(ofensivo->disparar(defensivo->getPosx(),defensivo->getPosy(),angle)){
+                ofensivo->generarDisparo();
+                balas ++;
+                break;
+            }
+        }
+        connect(timer,SIGNAL(timeout()),this,SLOT(espiaDefensa()));
+        timer->start(2000);
     }
         break;
     case 5:{
@@ -193,7 +202,10 @@ void Widget::on_next_clicked()
     }
         break;
     case 4:{
-
+        ofensivo->generarDisparo();
+        balas ++;
+        connect(timer,SIGNAL(timeout()),this,SLOT(espiaDefensa()));
+        timer->start(2000);
     }
         break;
     case 5:{
@@ -234,12 +246,28 @@ void Widget::espiaDefensa()
 {
     while (true) {
         double angle = 91 + rand() % (181-91);
-        if(defensivo->SimularDispDefensivo(angle,ofensivo->getPosx(),ofensivo->getPosy(),ofensivo->getV_inicial(),ofensivo->getAngulo())){
-            defensivo->generarDisparo();
-            balas ++;
-            break;
+        if(punto == 3){
+            if(defensivo->SimularDispDefensivo(angle,ofensivo->getPosx(),ofensivo->getPosy(),ofensivo->getV_inicial(),ofensivo->getAngulo())){
+                defensivo->generarDisparo();
+                balas ++;
+                break;
+            }
+        }
+        else{
+            if(defensivo->SimularDispDefensivo2(angle,ofensivo->getPosx(),ofensivo->getPosy(),ofensivo->getV_inicial(),ofensivo->getAngulo())){
+                defensivo->generarDisparo();
+                balas ++;
+                break;
+            }
         }
     }
     timer->stop();
     disconnect(timer,SIGNAL(timeout()),this,SLOT(espiaDefensa()));
+}
+
+void Widget::on_punto4_clicked()
+{
+    punto = 4;
+    ui->splitter->setVisible(false);
+    ui->iniciar->setVisible(true);
 }
