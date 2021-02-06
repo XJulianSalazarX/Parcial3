@@ -19,7 +19,7 @@ public:
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget = nullptr);
 
 private:
-    double Xo,Yo,posx,posy,v_inicial,r_impacto,tiempo,g,distancia,t_max;
+    double Xo,Yo,posx,posy,v_inicial,r_impacto,tiempo,g,distancia,t_max,t_inicio;
     int angulo;
     QTimer *timer;
     Radio *radio;

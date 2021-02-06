@@ -25,6 +25,9 @@ public:
     double getPosy() const;
     void setPosy(double value);
 
+    double getAngulo() const;
+    double getV_inicial() const;
+
 protected:
     short r;
     double posx,posy,distancia;

@@ -23,6 +23,7 @@ public:
     void mostrarDatos();
     void agregarTexto(QString datos);
     void quitarPortal();
+    bool retrasoDefensivo();
 
 private slots:
     void on_iniciar_clicked();
@@ -43,5 +44,9 @@ private:
     CanonOfensivo *ofensivo;
     CanonDefensivo *defensivo;
     short punto,balas;
+    QTimer *timer;
+
+public slots:
+    void espiaDefensa();
 };
 #endif // WIDGET_H

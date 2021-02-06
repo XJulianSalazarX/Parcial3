@@ -11,6 +11,8 @@ Widget::Widget(QWidget *parent)
     punto = 0;
     balas = 0;
 
+    timer = new QTimer();
+
     this->setMinimumSize(width(),height());
     this->setMaximumSize(width(),height());
     scene = new QGraphicsScene();
@@ -117,7 +119,16 @@ void Widget::on_iniciar_clicked()
     }
         break;
     case 3:{
-
+        while (true) {
+            double angle = rand() % 90;
+            if(ofensivo->disparar(defensivo->getPosx(),defensivo->getPosy(),angle)){
+                ofensivo->generarDisparo();
+                balas ++;
+                break;
+            }
+        }
+        connect(timer,SIGNAL(timeout()),this,SLOT(espiaDefensa()));
+        timer->start(2000);
     }
         break;
     case 4:{
@@ -175,7 +186,8 @@ void Widget::on_next_clicked()
     }
         break;
     case 3:{
-
+        ofensivo->generarDisparo();
+        balas ++;
     }
         break;
     case 4:{
@@ -201,5 +213,21 @@ void Widget::on_punto2_clicked()
 
 void Widget::on_punto3_clicked()
 {
+    punto = 3;
+    ui->splitter->setVisible(false);
+    ui->iniciar->setVisible(true);
+}
 
+void Widget::espiaDefensa()
+{
+    while (true) {
+        double angle = 91 + rand() % (181-91);
+        if(defensivo->SimularDispDefensivo(angle,ofensivo->getPosx(),ofensivo->getPosy(),ofensivo->getV_inicial(),ofensivo->getAngulo())){
+            defensivo->generarDisparo();
+            balas ++;
+            break;
+        }
+    }
+    timer->stop();
+    disconnect(timer,SIGNAL(timeout()),this,SLOT(espiaDefensa()));
 }

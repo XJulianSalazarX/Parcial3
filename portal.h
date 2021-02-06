@@ -29,6 +29,10 @@ public:
 
     void setT_max(double value);
 
+    double getV_inicial() const;
+
+    double getAngulo() const;
+
 private:
     double w,h,col;
     double posx,posy,v_inicial,angulo,distacia,r_impacto,t_max;

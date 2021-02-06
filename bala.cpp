@@ -47,7 +47,7 @@ void Bala::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWid
 void Bala::Mover()
 {
     tiempo+=0.01;
-    if(tiempo >= 1 and tiempo <=1.01){
+    if(tiempo >= 2 and tiempo <=2.01){
         w->quitarPortal();
     }
     double Vx,Vy;

@@ -63,6 +63,16 @@ void Portal::setT_max(double value)
     t_max = value;
 }
 
+double Portal::getV_inicial() const
+{
+    return v_inicial;
+}
+
+double Portal::getAngulo() const
+{
+    return angulo;
+}
+
 void Portal::actualizar()
 {
     col += w;

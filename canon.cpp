@@ -96,3 +96,13 @@ void Canon::setPosy(double value)
 {
     posy = value;
 }
+
+double Canon::getAngulo() const
+{
+    return portal->getAngulo();
+}
+
+double Canon::getV_inicial() const
+{
+    return portal->getV_inicial();
+}
