@@ -47,6 +47,10 @@ void Bala::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWid
 void Bala::Mover()
 {
     tiempo+=0.01;
+    if(tiempo >= 1 and tiempo <=1.01){
+        qDebug() << "funcion";
+        w->quitarPortal();
+    }
     double Vx,Vy;
     Vx = v_inicial * cos(angulo*M_PI/180);
     Vy = v_inicial * sin(angulo*M_PI/180);

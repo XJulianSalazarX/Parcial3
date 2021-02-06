@@ -22,6 +22,7 @@ public:
     void nextVisible();
     void mostrarDatos();
     void agregarTexto(QString datos);
+    void quitarPortal();
 
 private slots:
     void on_iniciar_clicked();

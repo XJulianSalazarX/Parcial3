@@ -12,6 +12,6 @@ void CanonDefensivo::paint(QPainter *painter, const QStyleOptionGraphicsItem *op
     widget = nullptr;
     painter->setBrush(Qt::green);
     painter->drawEllipse(boundingRect().center(),20,20);
-    painter->setBrush(Qt::darkCyan);
+    painter->setBrush(Qt::red);
     painter->drawEllipse(boundingRect());
 }

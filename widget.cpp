@@ -82,6 +82,12 @@ void Widget::agregarTexto(QString datos)
     }
 }
 
+void Widget::quitarPortal()
+{
+    ofensivo->portalInvisible();
+    defensivo->portalInvisible();
+}
+
 void Widget::on_iniciar_clicked()
 {
     ui->iniciar->setVisible(false);

@@ -27,13 +27,13 @@ void Canon::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWi
     widget = nullptr;
     painter->setBrush(Qt::yellow);
     painter->drawEllipse(boundingRect().center(),20,20);
-    painter->setBrush(Qt::darkCyan);
+    painter->setBrush(Qt::red);
     painter->drawEllipse(boundingRect());
 }
 
 void Canon::generarDisparo()
 {
-    //portal->setVisible(true);
+    portal->setVisible(true);
     portal->disparar();
 }
 
@@ -65,6 +65,11 @@ bool Canon::disparar(double x_, double y_,double angulo)
 void Canon::addPortal()
 {
     scene()->addItem(portal);
+}
+
+void Canon::portalInvisible()
+{
+    portal->setVisible(false);
 }
 
 void Canon::setDistancia(double value)
