@@ -26,23 +26,44 @@ Widget::Widget(QWidget *parent)
     ui->iniciar->setVisible(false);
     ui->next->setVisible(false);
     ui->label->setVisible(false);
+    invisible();
 
-    ofensivo = new CanonOfensivo(0,300,2);
-    scene->addItem(ofensivo);
-    ofensivo->addPortal();
-    ofensivo->addPortal2();
+//    ofensivo = new CanonOfensivo(0,300,2);
+//    scene->addItem(ofensivo);
+//    ofensivo->addPortal();
+//    ofensivo->addPortal2();
 
-    defensivo = new CanonDefensivo(640,300,2);
-    scene->addItem(defensivo);
-    defensivo->addPortal();
-    ofensivo->setDistancia(abs(ofensivo->getPosx()-defensivo->getPosx()));
-    defensivo->setDistancia(abs(ofensivo->getPosx()-defensivo->getPosx()));
+//    defensivo = new CanonDefensivo(1275,300,2);
+//    scene->addItem(defensivo);
+//    defensivo->addPortal();
+//    ofensivo->setDistancia(abs(ofensivo->getPosx()-defensivo->getPosx()));
+//    defensivo->setDistancia(abs(ofensivo->getPosx()-defensivo->getPosx()));
 
 }
 
 Widget::~Widget()
 {
     delete ui;
+}
+
+void Widget::visible()
+{
+    ui->label_2->setVisible(true);
+    ui->label_3->setVisible(true);
+    ui->xo->setVisible(true);
+    ui->yo->setVisible(true);
+    ui->xd->setVisible(true);
+    ui->yd->setVisible(true);
+}
+
+void Widget::invisible()
+{
+    ui->label_2->setVisible(false);
+    ui->label_3->setVisible(false);
+    ui->xo->setVisible(false);
+    ui->yo->setVisible(false);
+    ui->xd->setVisible(false);
+    ui->yd->setVisible(false);
 }
 
 void Widget::nextVisible()
@@ -95,7 +116,23 @@ void Widget::quitarPortal()
 
 void Widget::on_iniciar_clicked()
 {
+    if(ui->xd->value()-ui->xo->value()<640){
+        QMessageBox::critical(this,"Error","La distancia horizontal minima entre los cañones debe ser de 640.");
+        return;
+    }
     ui->iniciar->setVisible(false);
+
+    ofensivo = new CanonOfensivo(ui->xo->value(),ui->yo->value(),2);
+    scene->addItem(ofensivo);
+    ofensivo->addPortal();
+    ofensivo->addPortal2();
+
+    defensivo = new CanonDefensivo(ui->xd->value(),ui->yd->value(),2);
+    scene->addItem(defensivo);
+    defensivo->addPortal();
+    ofensivo->setDistancia(abs(ofensivo->getPosx()-defensivo->getPosx()));
+    defensivo->setDistancia(abs(ofensivo->getPosx()-defensivo->getPosx()));
+
     switch (punto) {
     case 1:{
         while (true) {
@@ -173,6 +210,7 @@ void Widget::on_punto1_clicked()
     punto = 1;
     ui->splitter->setVisible(false);
     ui->iniciar->setVisible(true);
+    visible();
 }
 
 void Widget::on_next_clicked()
@@ -239,6 +277,7 @@ void Widget::on_punto2_clicked()
     punto = 2;
     ui->splitter->setVisible(false);
     ui->iniciar->setVisible(true);
+    visible();
 }
 
 void Widget::on_punto3_clicked()
@@ -246,6 +285,7 @@ void Widget::on_punto3_clicked()
     punto = 3;
     ui->splitter->setVisible(false);
     ui->iniciar->setVisible(true);
+    visible();
 }
 
 short Widget::getPunto() const
@@ -319,6 +359,7 @@ void Widget::on_punto4_clicked()
     punto = 4;
     ui->splitter->setVisible(false);
     ui->iniciar->setVisible(true);
+    visible();
 }
 
 void Widget::on_punto5_clicked()
@@ -326,4 +367,5 @@ void Widget::on_punto5_clicked()
     punto = 5;
     ui->splitter->setVisible(false);
     ui->iniciar->setVisible(true);
+    visible();
 }

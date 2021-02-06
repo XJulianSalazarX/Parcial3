@@ -19,6 +19,8 @@ class Widget : public QWidget
 public:
     Widget(QWidget *parent = nullptr);
     ~Widget();
+    void visible();
+    void invisible();
     void nextVisible();
     void mostrarDatos();
     void agregarTexto(QString datos);
