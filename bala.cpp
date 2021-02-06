@@ -1,4 +1,8 @@
 #include "bala.h"
+#include "widget.h"
+#include <QDebug>
+
+extern Widget *w;
 
 Bala::Bala(double Xo_,double Yo_,double v_inicial_,int angulo_,double r_impacto_,double t_max_)
 {
@@ -8,6 +12,7 @@ Bala::Bala(double Xo_,double Yo_,double v_inicial_,int angulo_,double r_impacto_
     posy = 720-Yo;
     v_inicial = v_inicial_;
     angulo = angulo_;
+    qDebug() << angulo;
     r_impacto = r_impacto_;
     t_max = t_max_;
     radio = new Radio(r_impacto);
@@ -34,8 +39,6 @@ QRectF Bala::boundingRect() const
 
 void Bala::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
 {
-//    painter->setBrush(Qt::blue);
-//    painter->drawEllipse(boundingRect().center(),r_impacto,r_impacto);
     painter->setBrush(Qt::darkCyan);
     painter->drawEllipse(boundingRect());
 
@@ -60,7 +63,17 @@ void Bala::Mover()
         delete this;
         return;
     }
-    if(tiempo >= t_max)
+    if(tiempo >= t_max){
         timer->stop();
-
+        w->nextVisible();
+        QString datos ="Coordenadas de salida: ("+QString::number(Xo);
+        datos += ", "+QString::number(Yo)+")\n";
+        datos +="Velocidad inicial: "+QString::number(v_inicial)+"\n";
+        datos +="Angulo de disparo: "+QString::number(angulo)+"\n";
+        datos +="Tiempo en el que detona la bala: "+QString::number(tiempo)+" seg.\n";
+        datos +="Coordenas de detonacion: ("+QString::number(posx);
+        datos +=", "+QString::number(720-posy)+")\n";
+        w->agregarTexto(datos);
+        qDebug() << datos;
+    }
 }

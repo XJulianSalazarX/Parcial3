@@ -1,4 +1,5 @@
 #include "canon.h"
+#include <QDebug>
 
 Canon::Canon(double posx_,double posy_,short r_)
 {
@@ -43,13 +44,13 @@ bool Canon::disparar(double x_, double y_,double angulo)
     double Vx,Vy,x,y;
 
     for(int inicial=50;inicial<350;inicial++){
-        Vx = inicial*cos(angulo);
-        Vy = inicial*sin(angulo);
+        Vx = inicial*cos(angulo*M_PI/180);
+        Vy = inicial*sin(angulo*M_PI/180);
         for(double t=0;t<20;t+=0.5){
             x = posx + Vx * t;
             y = posy + Vy*t -(0.5*9.8*t*t);
             if(sqrt(pow((x-x_),2)+pow((y-y_),2)) <= radio){
-                portal->setAngulo(angulo*180/M_PI);
+                portal->setAngulo(angulo);
                 portal->setV_inicial(inicial);
                 portal->setDistacia(distancia);
                 portal->setR_impacto(radio);

@@ -19,6 +19,9 @@ class Widget : public QWidget
 public:
     Widget(QWidget *parent = nullptr);
     ~Widget();
+    void nextVisible();
+    void mostrarDatos();
+    void agregarTexto(QString datos);
 
 private slots:
     void on_iniciar_clicked();
@@ -34,6 +37,6 @@ private:
 //    Canon *canon2;
     CanonOfensivo *ofensivo;
     CanonDefensivo *defensivo;
-    short punto;
+    short punto,balas;
 };
 #endif // WIDGET_H

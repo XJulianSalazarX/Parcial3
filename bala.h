@@ -24,6 +24,7 @@ private:
     QTimer *timer;
     Radio *radio;
     bool toScene;
+
 public slots:
     void Mover();
 };
