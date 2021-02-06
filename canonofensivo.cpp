@@ -1,4 +1,5 @@
 #include "canonofensivo.h"
+#include <QDebug>
 
 CanonOfensivo::CanonOfensivo(double posx_, double posy_, short r_)
              :Canon(posx_,posy_,r_)
@@ -28,7 +29,7 @@ bool CanonOfensivo::simularDispApoyo(double angulo, double XoE, double YoE, doub
     VxA = portal->getV_inicial()*cos(portal->getAngulo()*M_PI/180);
     VyA = portal->getV_inicial()*sin(portal->getAngulo()*M_PI/180);
 
-    for(int inicial=50;inicial<350;inicial++){
+    for(int inicial=50;inicial<400;inicial++){
         Vx = inicial*cos(angulo*M_PI/180);
         Vy = inicial*sin(angulo*M_PI/180);
 
@@ -45,9 +46,11 @@ bool CanonOfensivo::simularDispApoyo(double angulo, double XoE, double YoE, doub
 
             //bala enemiga ya alcanzo a la bala a proteger
             if(sqrt(pow((xA-xE),2)+pow((yA-yE),2))<=distancia*0.05){
+                qDebug() << "gana defensivo";
                 break;
             }
             else if(sqrt(pow((x-xE),2)+pow((y-yE),2))<=radio and sqrt(pow((posx-xE),2)+pow((posy-yE),2))>distancia*0.05){
+                qDebug() << "datos encontrados";
                 if(y>0 and sqrt(pow((x-xA),2)+pow((y-yA),2))>radio){
                     portal2->setAngulo(angulo);
                     portal2->setV_inicial(inicial);
@@ -73,4 +76,9 @@ void CanonOfensivo::disparoApoyo()
 void CanonOfensivo::addPortal2()
 {
     scene()->addItem(portal2);
+}
+
+double CanonOfensivo::anguloBalaApoyo()
+{
+    return portal2->getAngulo();
 }

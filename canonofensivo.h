@@ -11,6 +11,7 @@ public:
     bool simularDispApoyo(double angulo, double XoE, double YoE, double ViE, double angE);
     void disparoApoyo();
     void addPortal2();
+    double anguloBalaApoyo();
 private:
     Portal *portal2;
 };

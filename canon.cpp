@@ -43,7 +43,7 @@ bool Canon::disparar(double x_, double y_,double angulo)
     radio = distancia*0.025;
     double Vx,Vy,x,y;
 
-    for(int inicial=50;inicial<350;inicial++){
+    for(int inicial=50;inicial<300;inicial++){
         Vx = inicial*cos(angulo*M_PI/180);
         Vy = inicial*sin(angulo*M_PI/180);
         for(double t=0;t<20;t+=0.5){

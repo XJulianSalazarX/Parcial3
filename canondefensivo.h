@@ -10,6 +10,7 @@ public:
 
     bool SimularDispDefensivo(double angulo,double XoE,double YoE,double ViE,double angE);
     bool SimularDispDefensivo2(double angulo,double XoE,double YoE,double ViE,double angE);
+    void stop();
 };
 
 #endif // CANONDEFENSIVO_H

@@ -26,6 +26,7 @@ public:
 
     short getPunto() const;
     void stopOfensivo();
+    void stopDefensivo();
 
 private slots:
     void on_iniciar_clicked();
@@ -49,6 +50,7 @@ private:
     CanonDefensivo *defensivo;
     short punto,balas;
     QTimer *timer;
+    int probados;
 
 public slots:
     void espiaDefensa();

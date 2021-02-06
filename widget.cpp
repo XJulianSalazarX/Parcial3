@@ -10,6 +10,7 @@ Widget::Widget(QWidget *parent)
 
     punto = 0;
     balas = 0;
+    probados = 0;
 
     timer = new QTimer();
 
@@ -29,8 +30,9 @@ Widget::Widget(QWidget *parent)
     ofensivo = new CanonOfensivo(0,300,2);
     scene->addItem(ofensivo);
     ofensivo->addPortal();
+    ofensivo->addPortal2();
 
-    defensivo = new CanonDefensivo(1000,100,2);
+    defensivo = new CanonDefensivo(640,300,2);
     scene->addItem(defensivo);
     defensivo->addPortal();
     ofensivo->setDistancia(abs(ofensivo->getPosx()-defensivo->getPosx()));
@@ -256,6 +258,11 @@ void Widget::stopOfensivo()
     ofensivo->stop();
 }
 
+void Widget::stopDefensivo()
+{
+    defensivo->stop();
+}
+
 void Widget::espiaDefensa()
 {
     while (true) {
@@ -287,13 +294,20 @@ void Widget::repetirDispDefensivo()
 {
     defensivo->generarDisparo();
     timer->stop();
+    disconnect(timer,SIGNAL(timeout()),this,SLOT(repetirDispDefensivo()));
+    if(punto == 5){
+        connect(timer,SIGNAL(timeout()),this,SLOT(espiaAtaque()));
+        timer->start(1000);
+    }
 }
 
 void Widget::espiaAtaque()
 {
-    for(int angle=0;angle<90;angle++){
+    for(int angle=probados;angle<90;angle++){
         if(ofensivo->simularDispApoyo(angle,defensivo->getPosx(),defensivo->getPosy(),defensivo->getV_inicial(),defensivo->getAngulo())){
             ofensivo->disparoApoyo();
+            probados = ofensivo->anguloBalaApoyo()+1;
+            break;
         }
     }
     timer->stop();

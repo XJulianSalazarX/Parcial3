@@ -23,7 +23,7 @@ bool CanonDefensivo::SimularDispDefensivo(double angulo, double XoE, double YoE,
     //velocidad en x e y bala enemiga
     VxE = ViE*cos(angE*M_PI/180);
     VyE = ViE*sin(angE*M_PI/180);
-    for(int inicial=50;inicial<350;inicial++){
+    for(int inicial=50;inicial<22;inicial++){
         Vx = inicial*cos(angulo*M_PI/180);
         Vy = inicial*sin(angulo*M_PI/180);
         for(double t=0,tE=2;t<20;t+=0.5,tE+=0.5){
@@ -54,7 +54,7 @@ bool CanonDefensivo::SimularDispDefensivo2(double angulo, double XoE, double YoE
     //velocidad en x e y bala enemiga
     VxE = ViE*cos(angE*M_PI/180);
     VyE = ViE*sin(angE*M_PI/180);
-    for(int inicial=50;inicial<350;inicial++){
+    for(int inicial=50;inicial<200;inicial++){
         Vx = inicial*cos(angulo*M_PI/180);
         Vy = inicial*sin(angulo*M_PI/180);
         for(double t=0,tE=2;t<20;t+=0.5,tE+=0.5){
@@ -76,4 +76,9 @@ bool CanonDefensivo::SimularDispDefensivo2(double angulo, double XoE, double YoE
         }
     }
     return false;
+}
+
+void CanonDefensivo::stop()
+{
+    portal->stopBala();
 }

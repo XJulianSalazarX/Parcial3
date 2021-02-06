@@ -72,6 +72,10 @@ void Bala::Mover()
             timer->stop();
             w->stopOfensivo();
         }
+        else if(w->getPunto() == 5){
+            timer->stop();
+            w->stopDefensivo();
+        }
         else{
             timer->stop();
             QString datos ="Coordenadas de salida: ("+QString::number(Xo);
