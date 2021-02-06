@@ -1,7 +1,9 @@
 #include "widget.h"
 
 #include <QApplication>
-
+/*
+ * Julian Ricardo Salazar Duarte
+*/
 Widget *w;
 int main(int argc, char *argv[])
 {
