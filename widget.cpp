@@ -145,6 +145,16 @@ void Widget::on_iniciar_clicked()
     }
         break;
     case 5:{
+        while (true) {
+            double angle = rand() % 90;
+            if(ofensivo->disparar(defensivo->getPosx(),defensivo->getPosy(),angle)){
+                ofensivo->generarDisparo();
+                balas ++;
+                break;
+            }
+        }
+        connect(timer,SIGNAL(timeout()),this,SLOT(espiaDefensa()));
+        timer->start(2000);
 
     }
         break;
@@ -209,6 +219,9 @@ void Widget::on_next_clicked()
     }
         break;
     case 5:{
+        ofensivo->generarDisparo();
+        connect(timer,SIGNAL(timeout()),this,SLOT(repetirDispDefensivo()));
+        timer->start(2000);
 
     }
         break;
@@ -265,9 +278,22 @@ void Widget::espiaDefensa()
     disconnect(timer,SIGNAL(timeout()),this,SLOT(espiaDefensa()));
 }
 
+void Widget::repetirDispDefensivo()
+{
+    defensivo->generarDisparo();
+    timer->stop();
+}
+
 void Widget::on_punto4_clicked()
 {
     punto = 4;
+    ui->splitter->setVisible(false);
+    ui->iniciar->setVisible(true);
+}
+
+void Widget::on_punto5_clicked()
+{
+    punto = 5;
     ui->splitter->setVisible(false);
     ui->iniciar->setVisible(true);
 }

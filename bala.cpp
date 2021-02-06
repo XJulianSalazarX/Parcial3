@@ -52,7 +52,7 @@ void Bala::stopTimer()
 void Bala::Mover()
 {
     tiempo+=0.01;
-    if(tiempo >= 2 and tiempo <=2.01){
+    if(tiempo >= 3 and tiempo <=3.01){
         w->quitarPortal();
     }
     double Vx,Vy;

@@ -40,6 +40,8 @@ private slots:
 
     void on_punto4_clicked();
 
+    void on_punto5_clicked();
+
 private:
     Ui::Widget *ui;
     QGraphicsScene *scene;
@@ -50,5 +52,6 @@ private:
 
 public slots:
     void espiaDefensa();
+    void repetirDispDefensivo();
 };
 #endif // WIDGET_H
