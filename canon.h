@@ -16,6 +16,7 @@ public:
     void generarDisparo();
     bool disparar(double x_, double y_,double angulo);
     void addPortal();
+    void portalInvisible();
     void setDistancia(double value);
 
     double getPosx() const;
@@ -23,6 +24,9 @@ public:
 
     double getPosy() const;
     void setPosy(double value);
+
+    double getAngulo() const;
+    double getV_inicial() const;
 
 protected:
     short r;

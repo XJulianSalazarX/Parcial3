@@ -1,6 +1,10 @@
 #include "bala.h"
+#include "widget.h"
+#include <QDebug>
 
-Bala::Bala(double Xo_,double Yo_,double v_inicial_,int angulo_,double r_impacto_)
+extern Widget *w;
+
+Bala::Bala(double Xo_,double Yo_,double v_inicial_,int angulo_,double r_impacto_,double t_max_,bool isOf)
 {
     Xo = Xo_;
     Yo = Yo_;
@@ -8,11 +12,15 @@ Bala::Bala(double Xo_,double Yo_,double v_inicial_,int angulo_,double r_impacto_
     posy = 720-Yo;
     v_inicial = v_inicial_;
     angulo = angulo_;
+    qDebug() << angulo;
     r_impacto = r_impacto_;
-    //distancia = distacia_;
+    t_max = t_max_;
+    radio = new Radio(r_impacto);
     g = 9.8;
     tiempo = 0;
-    setPos(posx-10,posy-10);
+    toScene = true;
+    isOfensivo = isOf;
+    setPos(posx,posy);
     timer = new QTimer();
     connect(timer,SIGNAL(timeout()),this,SLOT(Mover()));
     timer->start(10);
@@ -21,6 +29,7 @@ Bala::Bala(double Xo_,double Yo_,double v_inicial_,int angulo_,double r_impacto_
 Bala::~Bala()
 {
     delete timer;
+    delete radio;
 }
 
 QRectF Bala::boundingRect() const
@@ -30,26 +39,50 @@ QRectF Bala::boundingRect() const
 
 void Bala::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
 {
-//    painter->setBrush(Qt::blue);
-//    painter->drawEllipse(boundingRect().center(),r_impacto,r_impacto);
     painter->setBrush(Qt::darkCyan);
     painter->drawEllipse(boundingRect());
 
 }
 
+void Bala::stopTimer()
+{
+    timer->stop();
+}
+
 void Bala::Mover()
 {
     tiempo+=0.01;
+    if(tiempo >= 3 and tiempo <=3.01){
+        w->quitarPortal();
+    }
     double Vx,Vy;
     Vx = v_inicial * cos(angulo*M_PI/180);
     Vy = v_inicial * sin(angulo*M_PI/180);
     posx = Xo + Vx * tiempo;
     posy = 720 - (Yo + Vy * tiempo - (0.5*g*tiempo*tiempo));
-    setPos(posx-10,posy-10);
-    if(posy > 720){
-        scene()->removeItem(this);
-        delete this;
-        return;
+    setPos(posx,posy);
+    if(toScene){
+        scene()->addItem(radio);
+        toScene = false;
     }
-
+    radio->posicion(posx,posy);
+    if(tiempo >= t_max){
+        w->nextVisible();
+        if(!isOfensivo and (w->getPunto()== 3 or w->getPunto()==4)){
+            timer->stop();
+            w->stopOfensivo();
+        }
+        else{
+            timer->stop();
+            QString datos ="Coordenadas de salida: ("+QString::number(Xo);
+            datos += ", "+QString::number(Yo)+")\n";
+            datos +="Velocidad inicial: "+QString::number(v_inicial)+"\n";
+            datos +="Angulo de disparo: "+QString::number(angulo)+"\n";
+            datos +="Tiempo en el que detona la bala: "+QString::number(tiempo)+" seg.\n";
+            datos +="Coordenas de detonacion: ("+QString::number(posx);
+            datos +=", "+QString::number(720-posy)+")\n";
+            w->agregarTexto(datos);
+            qDebug() << datos;
+        }
+    }
 }

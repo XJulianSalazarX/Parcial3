@@ -1,4 +1,5 @@
 #include "canon.h"
+#include <QDebug>
 
 Canon::Canon(double posx_,double posy_,short r_)
 {
@@ -25,8 +26,8 @@ void Canon::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWi
     option = nullptr;
     widget = nullptr;
     painter->setBrush(Qt::yellow);
-    painter->drawEllipse(boundingRect().center(),15,15);
-    painter->setBrush(Qt::darkCyan);
+    painter->drawEllipse(boundingRect().center(),20,20);
+    painter->setBrush(Qt::red);
     painter->drawEllipse(boundingRect());
 }
 
@@ -43,16 +44,18 @@ bool Canon::disparar(double x_, double y_,double angulo)
     double Vx,Vy,x,y;
 
     for(int inicial=50;inicial<350;inicial++){
-        Vx = inicial*cos(angulo);
-        Vy = inicial*sin(angulo);
-        for(double t=0;t<100;t+=0.5){
+        Vx = inicial*cos(angulo*M_PI/180);
+        Vy = inicial*sin(angulo*M_PI/180);
+        for(double t=0;t<20;t+=0.5){
             x = posx + Vx * t;
             y = posy + Vy*t -(0.5*9.8*t*t);
             if(sqrt(pow((x-x_),2)+pow((y-y_),2)) <= radio){
-                portal->setAngulo(angulo*180/M_PI);
+                portal->setAngulo(angulo);
                 portal->setV_inicial(inicial);
                 portal->setDistacia(distancia);
                 portal->setR_impacto(radio);
+                portal->setT_max(t);
+                portal->setIsOfensivo(true);
                 return true;
             }
         }
@@ -63,6 +66,11 @@ bool Canon::disparar(double x_, double y_,double angulo)
 void Canon::addPortal()
 {
     scene()->addItem(portal);
+}
+
+void Canon::portalInvisible()
+{
+    portal->setVisible(false);
 }
 
 void Canon::setDistancia(double value)
@@ -88,4 +96,14 @@ double Canon::getPosy() const
 void Canon::setPosy(double value)
 {
     posy = value;
+}
+
+double Canon::getAngulo() const
+{
+    return portal->getAngulo();
+}
+
+double Canon::getV_inicial() const
+{
+    return portal->getV_inicial();
 }

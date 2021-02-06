@@ -27,12 +27,22 @@ public:
 
     void setR_impacto(double value);
 
+    void setT_max(double value);
+
+    double getV_inicial() const;
+
+    double getAngulo() const;
+
+    void setIsOfensivo(bool value);
+    void stopBala();
+
 private:
     double w,h,col;
-    double posx,posy,v_inicial,angulo,distacia,r_impacto;
+    double posx,posy,v_inicial,angulo,distacia,r_impacto,t_max;
     QPixmap *pixmap;
     QTimer *timer;
     Bala *bala;
+    bool isOfensivo;
 
 public slots:
     void actualizar();

@@ -34,7 +34,7 @@ void Portal::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QW
 
 void Portal::disparar()
 {
-    bala = new Bala(posx,posy,v_inicial,angulo,r_impacto);
+    bala = new Bala(posx,posy,v_inicial,angulo,r_impacto,t_max,isOfensivo);
     scene()->addItem(bala);
 }
 
@@ -56,6 +56,31 @@ void Portal::setDistacia(double value)
 void Portal::setR_impacto(double value)
 {
     r_impacto = value;
+}
+
+void Portal::setT_max(double value)
+{
+    t_max = value;
+}
+
+double Portal::getV_inicial() const
+{
+    return v_inicial;
+}
+
+double Portal::getAngulo() const
+{
+    return angulo;
+}
+
+void Portal::setIsOfensivo(bool value)
+{
+    isOfensivo = value;
+}
+
+void Portal::stopBala()
+{
+    bala->stopTimer();
 }
 
 void Portal::actualizar()
