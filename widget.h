@@ -23,7 +23,9 @@ public:
     void mostrarDatos();
     void agregarTexto(QString datos);
     void quitarPortal();
-    bool retrasoDefensivo();
+
+    short getPunto() const;
+    void stopOfensivo();
 
 private slots:
     void on_iniciar_clicked();
@@ -39,8 +41,6 @@ private slots:
 private:
     Ui::Widget *ui;
     QGraphicsScene *scene;
-//    Canon *canon;
-//    Canon *canon2;
     CanonOfensivo *ofensivo;
     CanonDefensivo *defensivo;
     short punto,balas;

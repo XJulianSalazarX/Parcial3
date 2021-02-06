@@ -38,6 +38,7 @@ bool CanonDefensivo::SimularDispDefensivo(double angulo, double XoE, double YoE,
                     portal->setDistacia(distancia);
                     portal->setR_impacto(radio);
                     portal->setT_max(t);
+                    portal->setIsOfensivo(false);
                     return true;
                 }
             }

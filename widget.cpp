@@ -188,6 +188,8 @@ void Widget::on_next_clicked()
     case 3:{
         ofensivo->generarDisparo();
         balas ++;
+        connect(timer,SIGNAL(timeout()),this,SLOT(espiaDefensa()));
+        timer->start(2000);
     }
         break;
     case 4:{
@@ -216,6 +218,16 @@ void Widget::on_punto3_clicked()
     punto = 3;
     ui->splitter->setVisible(false);
     ui->iniciar->setVisible(true);
+}
+
+short Widget::getPunto() const
+{
+    return punto;
+}
+
+void Widget::stopOfensivo()
+{
+    ofensivo->stop();
 }
 
 void Widget::espiaDefensa()

@@ -6,6 +6,8 @@ class CanonOfensivo: public Canon
 {
 public:
     CanonOfensivo(double posx_,double posy_,short r_);
+
+    void stop();
 };
 
 #endif // CANONOFENSIVO_H

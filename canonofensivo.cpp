@@ -5,3 +5,8 @@ CanonOfensivo::CanonOfensivo(double posx_, double posy_, short r_)
 {
 
 }
+
+void CanonOfensivo::stop()
+{
+    portal->stopBala();
+}

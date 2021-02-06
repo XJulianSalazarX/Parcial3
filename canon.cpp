@@ -55,6 +55,7 @@ bool Canon::disparar(double x_, double y_,double angulo)
                 portal->setDistacia(distancia);
                 portal->setR_impacto(radio);
                 portal->setT_max(t);
+                portal->setIsOfensivo(true);
                 return true;
             }
         }
