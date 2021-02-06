@@ -198,3 +198,8 @@ void Widget::on_punto2_clicked()
     ui->splitter->setVisible(false);
     ui->iniciar->setVisible(true);
 }
+
+void Widget::on_punto3_clicked()
+{
+
+}

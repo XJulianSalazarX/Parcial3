@@ -48,7 +48,6 @@ void Bala::Mover()
 {
     tiempo+=0.01;
     if(tiempo >= 1 and tiempo <=1.01){
-        qDebug() << "funcion";
         w->quitarPortal();
     }
     double Vx,Vy;
