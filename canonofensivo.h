@@ -8,6 +8,9 @@ public:
     CanonOfensivo(double posx_,double posy_,short r_);
 
     void stop();
+    bool simularDispApoyo(double angulo, double XoE, double YoE, double ViE, double angE);
+private:
+    Portal *portal2;
 };
 
 #endif // CANONOFENSIVO_H
