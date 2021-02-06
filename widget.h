@@ -30,6 +30,8 @@ public:
     void stopOfensivo();
     void stopDefensivo();
 
+    short getBalas() const;
+
 private slots:
     void on_iniciar_clicked();
 

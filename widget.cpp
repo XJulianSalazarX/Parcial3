@@ -78,34 +78,7 @@ void Widget::mostrarDatos()
 
 void Widget::agregarTexto(QString datos)
 {
-    switch (punto) {
-    case 1:{
-        ui->label->setText(ui->label->text()+datos+"Coordenadas del objetivo: (");
-        ui->label->setText(ui->label->text()+QString::number(defensivo->getPosx())+", "+QString::number(defensivo->getPosy())+")\n");
-    }
-        break;
-    case 2:{
-        ui->label->setText(ui->label->text()+datos+"Coordenadas del objetivo: (");
-        ui->label->setText(ui->label->text()+QString::number(ofensivo->getPosx())+", "+QString::number(ofensivo->getPosy())+")\n");
-    }
-        break;
-    case 3:{
-
-    }
-        break;
-    case 4:{
-
-    }
-        break;
-    case 5:{
-
-    }
-        break;
-    default:{
-        qDebug() << "Opcion no valida";
-    }
-        break;
-    }
+    ui->label->setText(ui->label->text()+datos);
 }
 
 void Widget::quitarPortal()
@@ -121,6 +94,7 @@ void Widget::on_iniciar_clicked()
         return;
     }
     ui->iniciar->setVisible(false);
+    invisible();
 
     ofensivo = new CanonOfensivo(ui->xo->value(),ui->yo->value(),2);
     scene->addItem(ofensivo);
@@ -138,7 +112,6 @@ void Widget::on_iniciar_clicked()
         while (true) {
             double angle = rand() % 90;
             if(ofensivo->disparar(defensivo->getPosx(),defensivo->getPosy(),angle)){
-                ui->label->setText("Simulacion "+QString::number(balas+1)+"\n");
                 ofensivo->generarDisparo();
                 balas ++;
                 break;
@@ -150,7 +123,6 @@ void Widget::on_iniciar_clicked()
         while (true){
             double angle = 91 + rand() % (181-91);
             if(defensivo->disparar(ofensivo->getPosx(),ofensivo->getPosy(),angle)){
-                ui->label->setText("Simulacion "+QString::number(balas+1)+"\n");
                 defensivo->generarDisparo();
                 balas ++;
                 break;
@@ -225,7 +197,6 @@ void Widget::on_next_clicked()
         while (true) {
             double angle = rand() % 90;
             if(ofensivo->disparar(defensivo->getPosx(),defensivo->getPosy(),angle)){
-                ui->label->setText(ui->label->text()+"Simulacion "+QString::number(balas+1)+"\n");
                 ofensivo->generarDisparo();
                 balas ++;
                 break;
@@ -237,7 +208,6 @@ void Widget::on_next_clicked()
         while (true) {
             double angle = 91 + rand() % (181-91);
             if(defensivo->disparar(ofensivo->getPosx(),ofensivo->getPosy(),angle)){
-                ui->label->setText(ui->label->text()+"Simulacion "+QString::number(balas+1)+"\n");
                 defensivo->generarDisparo();
                 balas ++;
                 break;
@@ -368,4 +338,9 @@ void Widget::on_punto5_clicked()
     ui->splitter->setVisible(false);
     ui->iniciar->setVisible(true);
     visible();
+}
+
+short Widget::getBalas() const
+{
+    return balas;
 }

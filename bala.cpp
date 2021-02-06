@@ -71,6 +71,14 @@ void Bala::Mover()
         if(!isOfensivo and (w->getPunto()== 3 or w->getPunto()==4)){
             timer->stop();
             w->stopOfensivo();
+//            QString datos ="canon que ataca:\n"
+//            "Coordenadas de salida: ("+QString::number(Xo);
+//            ", "+QString::number(Yo)+")\n";
+//            "Velocidad inicial: "+QString::number(v_inicial)+"\n";
+//            "Angulo de disparo: "+QString::number(angulo)+"\n";
+//            "Tiempo en el que detona la bala: "+QString::number(tiempo)+" seg.\n";
+//            "Coordenas de detonacion: ("+QString::number(posx);
+//            ", "+QString::number(720-posy)+")\n";
         }
         else if(w->getPunto() == 5){
             timer->stop();
@@ -78,15 +86,15 @@ void Bala::Mover()
         }
         else{
             timer->stop();
-            QString datos ="Coordenadas de salida: ("+QString::number(Xo);
-            datos += ", "+QString::number(Yo)+")\n";
-            datos +="Velocidad inicial: "+QString::number(v_inicial)+"\n";
-            datos +="Angulo de disparo: "+QString::number(angulo)+"\n";
-            datos +="Tiempo en el que detona la bala: "+QString::number(tiempo)+" seg.\n";
-            datos +="Coordenas de detonacion: ("+QString::number(posx);
-            datos +=", "+QString::number(720-posy)+")\n";
-            w->agregarTexto(datos);
-            qDebug() << datos;
+//            QString datos ="Coordenadas de salida: ("+QString::number(Xo);
+//            ", "+QString::number(Yo)+")\n";
+//            "Velocidad inicial: "+QString::number(v_inicial)+"\n";
+//            "Angulo de disparo: "+QString::number(angulo)+"\n";
+//            "Tiempo en el que detona la bala: "+QString::number(tiempo)+" seg.\n";
+//            "Coordenas de detonacion: ("+QString::number(posx);
+//            ", "+QString::number(720-posy)+")\n";
+//            w->agregarTexto(datos);
+//            qDebug() << datos;
         }
     }
 }
