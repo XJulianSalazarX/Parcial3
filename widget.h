@@ -47,6 +47,8 @@ private slots:
 
     void on_punto5_clicked();
 
+    void on_salir_clicked();
+
 private:
     Ui::Widget *ui;
     QGraphicsScene *scene;

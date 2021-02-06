@@ -10,6 +10,11 @@ CanonDefensivo::CanonDefensivo(double posx_, double posy_, short r_)
 
 }
 
+CanonDefensivo::~CanonDefensivo()
+{
+
+}
+
 void CanonDefensivo::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
 {
     option = nullptr;

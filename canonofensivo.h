@@ -6,6 +6,7 @@ class CanonOfensivo: public Canon
 {
 public:
     CanonOfensivo(double posx_,double posy_,short r_);
+    ~CanonOfensivo();
 
     void stop();
     bool simularDispApoyo(double angulo, double XoE, double YoE, double ViE, double angE);

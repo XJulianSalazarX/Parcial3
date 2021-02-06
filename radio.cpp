@@ -6,6 +6,11 @@ Radio::Radio(double r_)
     r = r_;
 }
 
+Radio::~Radio()
+{
+
+}
+
 QRectF Radio::boundingRect() const
 {
     return QRectF(-r,-r,2*r,2*r);

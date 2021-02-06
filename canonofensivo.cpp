@@ -11,6 +11,11 @@ CanonOfensivo::CanonOfensivo(double posx_, double posy_, short r_)
     portal2->setVisible(false);
 }
 
+CanonOfensivo::~CanonOfensivo()
+{
+    delete portal2;
+}
+
 void CanonOfensivo::stop()
 {
     portal->stopBala();

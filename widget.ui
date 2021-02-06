@@ -83,7 +83,7 @@
    <property name="geometry">
     <rect>
      <x>1140</x>
-     <y>640</y>
+     <y>560</y>
      <width>80</width>
      <height>41</height>
     </rect>
@@ -195,6 +195,19 @@
     <number>300</number>
    </property>
   </widget>
+  <widget class="QPushButton" name="salir">
+   <property name="geometry">
+    <rect>
+     <x>1140</x>
+     <y>620</y>
+     <width>80</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Salir</string>
+   </property>
+  </widget>
   <zorder>graphicsView</zorder>
   <zorder>splitter</zorder>
   <zorder>iniciar</zorder>
@@ -206,6 +219,7 @@
   <zorder>yo</zorder>
   <zorder>xd</zorder>
   <zorder>yd</zorder>
+  <zorder>salir</zorder>
  </widget>
  <resources/>
  <connections/>

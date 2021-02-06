@@ -74,6 +74,7 @@ void Widget::nextVisible()
 void Widget::mostrarDatos()
 {
     ui->label->setVisible(true);
+    ui->salir->setVisible(true);
 }
 
 void Widget::agregarTexto(QString datos)
@@ -182,6 +183,7 @@ void Widget::on_punto1_clicked()
 {
     punto = 1;
     ui->splitter->setVisible(false);
+    ui->salir->setVisible(false);
     ui->iniciar->setVisible(true);
     visible();
 }
@@ -245,6 +247,7 @@ void Widget::on_punto2_clicked()
 {
     punto = 2;
     ui->splitter->setVisible(false);
+    ui->salir->setVisible(false);
     ui->iniciar->setVisible(true);
     visible();
 }
@@ -253,6 +256,7 @@ void Widget::on_punto3_clicked()
 {
     punto = 3;
     ui->splitter->setVisible(false);
+    ui->salir->setVisible(false);
     ui->iniciar->setVisible(true);
     visible();
 }
@@ -332,6 +336,7 @@ void Widget::on_punto4_clicked()
 {
     punto = 4;
     ui->splitter->setVisible(false);
+    ui->salir->setVisible(false);
     ui->iniciar->setVisible(true);
     visible();
 }
@@ -340,6 +345,7 @@ void Widget::on_punto5_clicked()
 {
     punto = 5;
     ui->splitter->setVisible(false);
+    ui->salir->setVisible(false);
     ui->iniciar->setVisible(true);
     visible();
 }
@@ -347,4 +353,16 @@ void Widget::on_punto5_clicked()
 short Widget::getBalas() const
 {
     return balas;
+}
+
+void Widget::on_salir_clicked()
+{
+    if(ui->label->isVisible()){
+        ui->label->setVisible(false);
+        scene->clear();
+        ui->splitter->setVisible(true);
+        punto = 0;
+        balas = 0;
+    }
+    else close();
 }
