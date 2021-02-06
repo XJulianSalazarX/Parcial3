@@ -1,9 +1,13 @@
 #include "radio.h"
-#include <QDebug>
 
 Radio::Radio(double r_)
 {
     r = r_;
+}
+
+Radio::~Radio()
+{
+
 }
 
 QRectF Radio::boundingRect() const

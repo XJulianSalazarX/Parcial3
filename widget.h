@@ -19,14 +19,19 @@ class Widget : public QWidget
 public:
     Widget(QWidget *parent = nullptr);
     ~Widget();
+    void visible();
+    void invisible();
     void nextVisible();
     void mostrarDatos();
     void agregarTexto(QString datos);
     void quitarPortal();
+    void quitarPortal2();
 
     short getPunto() const;
     void stopOfensivo();
     void stopDefensivo();
+
+    short getBalas() const;
 
 private slots:
     void on_iniciar_clicked();
@@ -42,6 +47,8 @@ private slots:
     void on_punto4_clicked();
 
     void on_punto5_clicked();
+
+    void on_salir_clicked();
 
 private:
     Ui::Widget *ui;

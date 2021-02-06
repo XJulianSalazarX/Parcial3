@@ -8,6 +8,8 @@
 #include <QTimer>
 #include <QGraphicsScene>
 #include "radio.h"
+#include "camino.h"
+#include <QList>
 
 class Bala: public QObject, public QGraphicsItem
 {
@@ -26,6 +28,8 @@ private:
     Radio *radio;
     bool toScene;
     bool isOfensivo;
+    QList<Camino *> rastro;
+
 
 public slots:
     void Mover();

@@ -29,7 +29,13 @@ Bala::Bala(double Xo_,double Yo_,double v_inicial_,int angulo_,double r_impacto_
 Bala::~Bala()
 {
     delete timer;
+    scene()->removeItem(radio);
     delete radio;
+    qDebug() << rastro.size();
+    for(Camino *i : rastro){
+        scene()->removeItem(i);
+        delete i;
+    }
 }
 
 QRectF Bala::boundingRect() const
@@ -55,12 +61,19 @@ void Bala::Mover()
     if(tiempo >= 3 and tiempo <=3.01){
         w->quitarPortal();
     }
+
     double Vx,Vy;
     Vx = v_inicial * cos(angulo*M_PI/180);
     Vy = v_inicial * sin(angulo*M_PI/180);
     posx = Xo + Vx * tiempo;
     posy = 720 - (Yo + Vy * tiempo - (0.5*g*tiempo*tiempo));
     setPos(posx,posy);
+
+    if(int(tiempo*10)%10==0){
+        rastro.push_back(new Camino(posx,posy));
+        scene()->addItem(rastro.last());
+    }
+
     if(toScene){
         scene()->addItem(radio);
         toScene = false;
@@ -75,18 +88,10 @@ void Bala::Mover()
         else if(w->getPunto() == 5){
             timer->stop();
             w->stopDefensivo();
+            w->quitarPortal2();
         }
         else{
             timer->stop();
-            QString datos ="Coordenadas de salida: ("+QString::number(Xo);
-            datos += ", "+QString::number(Yo)+")\n";
-            datos +="Velocidad inicial: "+QString::number(v_inicial)+"\n";
-            datos +="Angulo de disparo: "+QString::number(angulo)+"\n";
-            datos +="Tiempo en el que detona la bala: "+QString::number(tiempo)+" seg.\n";
-            datos +="Coordenas de detonacion: ("+QString::number(posx);
-            datos +=", "+QString::number(720-posy)+")\n";
-            w->agregarTexto(datos);
-            qDebug() << datos;
         }
     }
 }

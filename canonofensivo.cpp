@@ -1,11 +1,18 @@
 #include "canonofensivo.h"
-#include <QDebug>
+#include "widget.h"
+
+extern Widget *w;
 
 CanonOfensivo::CanonOfensivo(double posx_, double posy_, short r_)
              :Canon(posx_,posy_,r_)
 {
     portal2 = new Portal(posx,posy);
     portal2->setVisible(false);
+}
+
+CanonOfensivo::~CanonOfensivo()
+{
+    delete portal2;
 }
 
 void CanonOfensivo::stop()
@@ -46,11 +53,9 @@ bool CanonOfensivo::simularDispApoyo(double angulo, double XoE, double YoE, doub
 
             //bala enemiga ya alcanzo a la bala a proteger
             if(sqrt(pow((xA-xE),2)+pow((yA-yE),2))<=distancia*0.05){
-                qDebug() << "gana defensivo";
                 break;
             }
             else if(sqrt(pow((x-xE),2)+pow((y-yE),2))<=radio and sqrt(pow((posx-xE),2)+pow((posy-yE),2))>distancia*0.05){
-                qDebug() << "datos encontrados";
                 if(y>0 and sqrt(pow((x-xA),2)+pow((y-yA),2))>radio){
                     portal2->setAngulo(angulo);
                     portal2->setV_inicial(inicial);
@@ -58,6 +63,19 @@ bool CanonOfensivo::simularDispApoyo(double angulo, double XoE, double YoE, doub
                     portal2->setR_impacto(radio);
                     portal2->setT_max(t);
                     portal2->setIsOfensivo(true);
+                    if(w->getBalas()== 0)
+                        w->agregarTexto("No conseguido\n\n");
+                    QString datos="Simulacion disparo de ayuda: "+QString::number(w->getBalas()+1);
+                    datos+="\nCoordenadas de salida: ("+QString::number(posx);
+                    datos+=", "+QString::number(posy)+")\n";
+                    datos+="Velocidad inicial: "+QString::number(inicial)+"\n";
+                    datos+="Angulo de disparo: "+QString::number(angulo)+"\n";
+                    datos+="Tiempo en el que detona la bala: "+QString::number(t)+" seg.\n";
+                    datos+="Coordenas de detonacion: ("+QString::number(x);
+                    datos+=", "+QString::number(y)+")\n";
+                    datos+="Coordenadas Objetivo: ("+QString::number(xE);
+                    datos+=", "+QString::number(yE)+")\n";
+                    w->agregarTexto(datos);
                     return true;
                 }
             }
@@ -81,4 +99,14 @@ void CanonOfensivo::addPortal2()
 double CanonOfensivo::anguloBalaApoyo()
 {
     return portal2->getAngulo();
+}
+
+void CanonOfensivo::limpiarPortal2()
+{
+    portal2->limpiarBala();
+}
+
+void CanonOfensivo::portalInvisible2()
+{
+    portal2->setVisible(false);
 }

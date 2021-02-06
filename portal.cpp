@@ -1,5 +1,4 @@
 #include "portal.h"
-#include <QDebug>
 
 Portal::Portal(double posx_,double posy_,QObject *parent):QObject(parent)
 {
@@ -35,7 +34,6 @@ void Portal::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QW
 
 void Portal::disparar()
 {
-    qDebug() << "Entra en disparar";
     bala = new Bala(posx,posy,v_inicial,angulo,r_impacto,t_max,isOfensivo);
     scene()->addItem(bala);
 }
@@ -83,6 +81,11 @@ void Portal::setIsOfensivo(bool value)
 void Portal::stopBala()
 {
     bala->stopTimer();
+}
+
+void Portal::limpiarBala()
+{
+    delete bala;
 }
 
 void Portal::actualizar()

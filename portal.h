@@ -36,6 +36,8 @@ public:
     void setIsOfensivo(bool value);
     void stopBala();
 
+    void limpiarBala();
+
 private:
     double w,h,col;
     double posx,posy,v_inicial,angulo,distacia,r_impacto,t_max;
