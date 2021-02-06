@@ -52,8 +52,34 @@ void Widget::mostrarDatos()
 
 void Widget::agregarTexto(QString datos)
 {
-    ui->label->setText(ui->label->text()+datos+"\nCoordenadas del objetivo: (");
-    ui->label->setText(ui->label->text()+QString::number(defensivo->getPosx())+", "+QString::number(defensivo->getPosy())+")\n");
+    switch (punto) {
+    case 1:{
+        ui->label->setText(ui->label->text()+datos+"Coordenadas del objetivo: (");
+        ui->label->setText(ui->label->text()+QString::number(defensivo->getPosx())+", "+QString::number(defensivo->getPosy())+")\n");
+    }
+        break;
+    case 2:{
+        ui->label->setText(ui->label->text()+datos+"Coordenadas del objetivo: (");
+        ui->label->setText(ui->label->text()+QString::number(ofensivo->getPosx())+", "+QString::number(ofensivo->getPosy())+")\n");
+    }
+        break;
+    case 3:{
+
+    }
+        break;
+    case 4:{
+
+    }
+        break;
+    case 5:{
+
+    }
+        break;
+    default:{
+        qDebug() << "Opcion no valida";
+    }
+        break;
+    }
 }
 
 void Widget::on_iniciar_clicked()
@@ -73,7 +99,15 @@ void Widget::on_iniciar_clicked()
     }
         break;
     case 2:{
-
+        while (true){
+            double angle = 91 + rand() % (181-91);
+            if(defensivo->disparar(ofensivo->getPosx(),ofensivo->getPosy(),angle)){
+                ui->label->setText("Simulacion "+QString::number(balas+1)+"\n");
+                defensivo->generarDisparo();
+                balas ++;
+                break;
+            }
+        }
     }
         break;
     case 3:{
@@ -123,7 +157,15 @@ void Widget::on_next_clicked()
     }
         break;
     case 2:{
-
+        while (true) {
+            double angle = 91 + rand() % (181-91);
+            if(defensivo->disparar(ofensivo->getPosx(),ofensivo->getPosy(),angle)){
+                ui->label->setText(ui->label->text()+"Simulacion "+QString::number(balas+1)+"\n");
+                defensivo->generarDisparo();
+                balas ++;
+                break;
+            }
+        }
     }
         break;
     case 3:{
@@ -142,4 +184,11 @@ void Widget::on_next_clicked()
         qDebug() << "Opcion no valida";
     }
     }
+}
+
+void Widget::on_punto2_clicked()
+{
+    punto = 2;
+    ui->splitter->setVisible(false);
+    ui->iniciar->setVisible(true);
 }

@@ -30,6 +30,8 @@ private slots:
 
     void on_next_clicked();
 
+    void on_punto2_clicked();
+
 private:
     Ui::Widget *ui;
     QGraphicsScene *scene;
